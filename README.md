@@ -108,7 +108,8 @@ Trên Worker Node còn có Kube-proxy với 2 chức năng:
 
 # E. Minikube
 
-![image](https://github.com/Roses21/NT534.O21.ANTN-GROUP9-Kubescape/assets/147015288/f1ae6e8e-8cc1-493b-ba5d-cab02cd75d0b)
+![image](https://github.com/Roses21/NT534.O21.ANTN-GROUP9-Kubescape/assets/147015288/8b54896c-27cc-4079-8964-6afb2f0b6b90)
+
 
 - Minikube là cluster bao gồm một master processes và một worker processes chạy trên cùng một node. Minikube sẽ tạo một virtual box trong máy tính local và 1 node như hình trên sẽ được chạy trong virtual box này.
 - Các bạn có thể tham khảo cách cài đặt và triển khai node minikube cơ bản tại: https://minikube.sigs.k8s.io/docs/start/
@@ -147,7 +148,9 @@ Trên Worker Node còn có Kube-proxy với 2 chức năng:
 
 ![image](https://github.com/Roses21/NT534.O21.ANTN-GROUP9-Kubescape/assets/147015288/44feac88-e164-40b1-8c74-ce261edd832d)
 
-# G. Kết quả thực hiện
+# G. Kiến trúc trong đồ án: Minikube + Docker + Kubescape
+https://www.linkedin.com/pulse/deploying-container-kubernetes-biswajit-patnaik/ 
+# H. Kết quả thực hiện
 Chúng tôi thực hiện 5 kịch bản demo, sẽ xoay quanh những tính năng mạnh mẽ và nổi bật của Kubescape. Bạn có thể xem video https://youtu.be/B7eazHTsIv8?si=-PSzdXG9JzmCJJGx để hiểu rõ hơn, đây là video được tài trợ bởi ARMO Teams nên nó đáng để xem đấy!
 ## Kịch bản 1: Setting CPU and memory limits
 - Tác dụng: quan trọng khi đảm bảo rằng giới hạn bộ nhớ đã được thiết lập cho các container trong Kubernetes vì nó giúp:
