@@ -8,7 +8,7 @@
 
 # Docker
 ## Khái niệm Docker
-- Docker là một nền tảng phần mềm cho phép chúng ta chạy, kiểm thử và triển khai ứng dụng một cách nhanh chóng trên các môi trường, phiên bản và hệ điều hành khác nhau. Docker tạo ra các **môi trường cách ly được gọi là container** và **đóng gói** tất cả những gì cần thiết để ứng dụng của chúng ta có thể chạy được vào trong containers này.
+- Docker là một **container runtime**, một nền tảng phần mềm cho phép chúng ta chạy, kiểm thử và triển khai ứng dụng một cách nhanh chóng trên các môi trường, phiên bản và hệ điều hành khác nhau. Docker tạo ra các **môi trường cách ly được gọi là container** và **đóng gói** tất cả những gì cần thiết để ứng dụng của chúng ta có thể chạy được vào trong containers này.
 - Ví dụ: Bạn nấu món bún bò rất ngon và được bạn bè hỏi xin cách làm. Có 2 cách: 1 là bạn sẽ cho họ công thức, nhưng khá phức tạp để làm theo; do đó bạn chọn cách 2: bạn chuẩn bị sẵn 1 túi bún, 1 túi rau, 1 túi chả và thịt bò, nấu sẵn nước dùng, sau đó đóng gói tất cả vào 1 thùng lớn và ship đi. Họ nhận được, để sử dụng thì chỉ cần trộn tất cả vào nhau. Bằng cách này, bạn bè đã có thể thưởng thức món bún bò với cùng hương vị mà bạn đã ăn. Thùng lớn chứa tất cả nguyên liệu của món bún bò chính là hình ảnh của Docker Container.
 
 ## Images
@@ -22,6 +22,14 @@
 ## Container
 - Docker cung cấp khả năng đóng gói và chạy ứng dụng trong một môi trường cách ly gọi là container. Việc cách ly và bảo mật này cho phép bạn chạy nhiều container đồng thời trên một máy chủ nhất định. Các container nhẹ và chứa mọi thứ cần thiết để chạy ứng dụng, do đó bạn không cần phải phụ thuộc vào những gì được cài đặt trên máy chủ. Bạn có thể chia sẻ các container trong quá trình làm việc và đảm bảo rằng mọi người bạn chia sẻ đều nhận được cùng một container hoạt động theo cách giống nhau.
 - Điều quan trọng là mỗi container có thể được viết bằng một ngôn ngữ khác nhau, container A dùng Java, B dùng Python, C dùng NodeJS nhưng sẽ không vấn đề gì vì nó được chạy trong môi trường riêng biệt và độc lập.
+- Tại sao cần container?
+  
+  ⇒ Mỗi service cần được chạy trên 1 thiết bị (1 PC/ laptop/ Cloud VPS…), do đó khi triển khai sẽ rất tốn kém.
+  
+  ⇒ Giải quyết: sử dụng containerized application (điển hình là Docker), một container sẽ bao gồm 1 hoặc nhiều services.
+- Làm cách nào 1 container có thể thông báo cho các container khác khi nó có sự update?
+
+  ⇒ Nhờ vào Kubenetes nằm trên master node. Tìm hiểu kỹ hơn ở mục Kubenetes nhé! 
 
 ## Docker architecture
 <img src="https://docs.docker.com/get-started/images/docker-architecture.webp">
@@ -33,9 +41,50 @@ Chúng ta sẽ quan tâm đến 3 thành phần chính:
 
 # Kubernetes
 ## Khái niệm Kubernetes
-- Kubernetes (viết tắt là K8s) là một hệ thống mã nguồn mở được phát triển bởi Google, dùng để tự động hóa triển khai, mở rộng và quản lý các ứng dụng được đóng gói trong các container. Kubernetes cung cấp một cách để quản lý các ứng dụng được triển khai trong các môi trường đám mây, dữ liệu trung tâm hoặc trên máy tính cá nhân.
+- Kubernetes (viết tắt là K8s) là một hệ thống mã nguồn mở được phát triển bởi Google, dùng để tự động hóa triển khai, mở rộng và quản lý các ứng dụng được đóng gói trong các container.
+- Nhưng Kubernetes không chỉ là một **công cụ điều phối container**. Nó có thể được coi là **hệ điều hành dành cho các ứng dụng gốc đám mây (cloud-native applications)** theo nghĩa nó là nền tảng mà các ứng dụng chạy trên đó, giống như các ứng dụng máy tính chạy trên MacOS, Windows hoặc Linux.
+- K8s đảm bảo cho các service hoạt động trơn tru theo hướng dẫn từ file config - có đuôi yaml hoặc yml.
 - Kubernetes cung cấp các tính năng như tự động cân bằng tải, tự động khôi phục sau lỗi và tự động mở rộng để giúp quản lý một lượng lớn các microservices một cách hiệu quả và đáng tin cậy.
-## Các components quan trọng trong K8s
+- Một hình ảnh ẩn dụ dễ hiểu: K8s giống như nhạc trưởng **điều phối** các container là các nhạc công, file config là nhà soạn nhạc.
+## Kiến trúc Kubenetes
+
+![image](https://github.com/Roses21/NT534.O21.ANTN-GROUP9-Kubescape/assets/147015288/6469bffd-05d7-4fde-b76f-755f2fecda07)
+
+## Các khái niệm quan trọng trong K8s
+### Control plane (master)
+- Control plane là hệ thống duy trì bản ghi của tất cả các đối tượng Kubernetes. Nó liên tục quản lý các trạng thái của đối tượng, phản ứng với những thay đổi trong cụm; nó cũng giúp làm cho trạng thái thực tế của các đối tượng hệ thống khớp với trạng thái mong muốn.
+- Control plane được tạo thành từ ba thành phần chính: kube-apiserver, kube-controller-manager và kube-scheduler. Tất cả đều có thể chạy trên một nút chính hoặc có thể được sao chép trên nhiều nút chính để có tính sẵn sàng cao.
+  - API server: cung cấp các API để hỗ trợ điều phối vòng đời (mở rộng quy mô, cập nhật,...) cho các loại ứng dụng khác nhau. Nó cũng hoạt động như **một cổng vào cụm**, vì vậy API server phải có thể truy cập được bởi các máy khách từ bên ngoài cụm. Khách hàng xác thực thông qua API server và cũng sử dụng nó làm proxy/tunnel cho các nodes và pods (và services).
+  - Scheduler: Bộ lập lịch chịu trách nhiệm lập lịch cho các pods trong worker nodes; nó tính đến nhiều ràng buộc khác nhau, chẳng hạn như các giới hạn hoặc đảm bảo về tài nguyên cũng như các thông số kỹ thuật.
+  - Controller manager: chạy controllers để điều khiển trạng thái của cluster.
+  - etcd: lưu trữ, truy xuất thông tin về cụm.
+### Cluster Nodes (kubelet)
+
+![image](https://github.com/Roses21/NT534.O21.ANTN-GROUP9-Kubescape/assets/147015288/f3d1434a-792e-4624-86e2-6c53b9b10c98)
+
+- Cluster nodes là các máy chạy containers và được quản lý bởi master nodes. **Kubelet là bộ điều khiển chính và quan trọng nhất trong Kubernetes**. Nó chịu trách nhiệm điều khiển lớp thực thi container.
+- Có thể là máy ảo hoặc máy vật lý, tuỳ thuộc vào cluster.
+- Một Node có thể chứa nhiều Pods và Kubernetes master tự động xử lí việc lên lịch trình các Pods thuộc các Nodes ở trong cluster. Việc lên lịch trình tự động của Master sẽ tính đến các tài nguyên có sẵn trên mỗi Node.
+- Mỗi Node ở Kubernetes chạy ít nhất:
+  - Kubelet, một quy trình chịu trách nhiệm liên lạc giữa Kubernetes Master và Node; quản lí các Pods và các containers đang chạy trên cùng một máy.
+  - Một container runtime (như Docker, rkt) chịu trách nhiệm lấy container image từ registry, giải nén container và chạy ứng dụng. Các containers chỉ nên được lên lịch trình cùng nhau trong một Pod duy nhất nếu chúng được liên kết chặt chẽ.
+
+### Pods
+
+![image](https://github.com/Roses21/NT534.O21.ANTN-GROUP9-Kubescape/assets/147015288/d54c8e89-3290-47cc-90f3-b5e0977b958e)
+
+- Một Pod luôn chạy trên một Node.
+- Pod là đơn vị nhỏ nhất trong K8s, được sử dụng để lưu **phiên bản chạy của ứng dụng**.
+- Pod đại diện cho một nhóm gồm một hoặc nhiều ứng dụng containers (ví dụ như Docker hoặc rkt) và một số tài nguyên được chia sẻ cho các containers đó. Những tài nguyên đó bao gồm:
+  - Lưu trữ được chia sẻ, dưới dạng Volumes.
+  - Kết nối mạng, mối Pod có 1 địa chỉ IP được sử dụng trong nội bộ cluster.
+  - Thông tin về cách chạy từng container, chẳng hạn như phiên bản container image hoặc các ports cụ thể để sử dụng.
+
+### Volume
+Về cốt lõi, một volume chỉ là một thư mục, có thể chứa một số dữ liệu trong đó, mà một pod có thể truy cập được.
+
+# Minikube
+Minikube là một công cụ giúp chạy Kubernetes cục bộ một cách dễ dàng.
 
 # Kubescape
 - Kubescape là một nền tảng bảo mật Kubernetes mã nguồn mở. Nó bao gồm phân tích rủi ro, tuân thủ bảo mật và quét cấu hình sai. Nhắm mục tiêu vào người thực hành DevSecOps hoặc kỹ sư nền tảng, nó cung cấp giao diện CLI dễ sử dụng, định dạng đầu ra linh hoạt và khả năng quét tự động. Nó giúp người dùng và quản trị viên Kubernetes tiết kiệm thời gian, công sức và tài nguyên quý giá.
