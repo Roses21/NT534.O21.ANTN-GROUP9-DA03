@@ -101,6 +101,11 @@ Trên Worker Node còn có Kube-proxy với 2 chức năng:
   - Định tuyến traffic đến đúng Pods.
   - Cung cấp Load Balancing cho Pods và đảm bảo traffic được phân bổ đồng đều cho các Pods.
 
+# Summary: Kiến trúc K8s + Docker
+
+![image](https://github.com/Roses21/NT534.O21.ANTN-GROUP9-Kubescape/assets/147015288/9871cfab-ebc8-4d5a-81d7-556960da6758)
+
+
 # E. Minikube
 
 ![image](https://github.com/Roses21/NT534.O21.ANTN-GROUP9-Kubescape/assets/147015288/f1ae6e8e-8cc1-493b-ba5d-cab02cd75d0b)
@@ -109,10 +114,59 @@ Trên Worker Node còn có Kube-proxy với 2 chức năng:
 - Các bạn có thể tham khảo cách cài đặt và triển khai node minikube cơ bản tại: https://minikube.sigs.k8s.io/docs/start/
   
 # F. Kubescape
-## 1. Tổng quan về Kubescape
-- Kubescape là một nền tảng bảo mật Kubernetes mã nguồn mở. Nó bao gồm phân tích rủi ro, tuân thủ bảo mật và quét cấu hình sai. Nhắm mục tiêu vào người thực hành DevSecOps hoặc kỹ sư nền tảng, nó cung cấp giao diện CLI dễ sử dụng, định dạng đầu ra linh hoạt và khả năng quét tự động. Nó giúp người dùng và quản trị viên Kubernetes tiết kiệm thời gian, công sức và tài nguyên quý giá.
-- Kubescape quét các cụm (cluster), tệp YAML và biểu đồ Helm. Nó phát hiện các cấu hình sai theo nhiều khung (bao gồm NSA-CISA, MITER ATT&CK® và CIS Benchmark):
-  -   
+## F.1. Tổng quan về Kubescape
+- Kubescape là một nền tảng bảo mật Kubernetes mã nguồn mở. Nhắm mục tiêu vào người thực hành DevSecOps hoặc kỹ sư nền tảng, nó cung cấp giao diện CLI dễ sử dụng, định dạng đầu ra linh hoạt và khả năng quét tự động. Nó giúp người dùng và quản trị viên Kubernetes tiết kiệm thời gian, công sức và tài nguyên quý giá.
+- Kubescape có thể **chạy dưới dạng một bộ các microservices bên trong cluster K8s**. Điều này cho phép bạn liên tục theo dõi trạng thái của một cụm.
+- Kubescape scans:
+  - Cluster.
+  - Manifest files (YAML files, Helm Chart).
+  - Code repositories.
+  - Container registries.
+  - Images.
 
-- Tham khảo tại trang https://kubescape.io/ 
-# Kết quả thực hiện
+    => Phát hiện: cấu hình sai thông qua 3 khung NSA, MITRE, CIS; lỗ hổng phần mềm và tính toán được mức điểm của risks.
+    
+- Chi tiết 3 khung mà Kubescape sử dụng:
+  - NSA-CISA (National Security Agency - Cybersecurity and Infrastructure Security Agency): gồm 24 controls, đề cập những vấn đề về: cấu hình cluster, quyền truy cập và xác thực, pod và container, bảo mật mạng, quản lý bản vá.
+  - MISTRE (dựa trên MITRE ATT&CK): tập trung vào các chiến thuật, kỹ thuật và quy trình đã biết liên quan đến các cuộc tấn công mạng => Tạo ra ma trận mối đe dọa (threat matrix):
+
+    ![image](https://github.com/Roses21/NT534.O21.ANTN-GROUP9-Kubescape/assets/147015288/d43932b0-e801-4210-91ff-d8b3514de5a9)
+
+  - CIS (center for information security): một bộ cấu hình an toàn cho K8s: control plane components, etcd, scheduler, policies,... Gồm 3 versions:
+    - Default K8S cluster: cis-v1.23-t1.0.1
+    - Azure K8s service: cis-aks-t1.2.0
+    - Amazon Elastic K8s service: cis-eks-t1.2.0 
+## F.2. Vị trí của Kubescape trong kiến trúc
+## F.3. Vulnerability scanning
+- Mục này xuất hiện là vì thầy của mình yêu cầu nhóm focus vào vấn đề này, link gốc các bạn có thể xem tại https://kubescape.io/docs/operator/vulnerabilities/
+- 
+## ARMO Platform
+
+- ARMO Platform là một giải pháp SaaS (Software as a service).
+- Kubescape được tích hợp thêm ARMO Platform sẽ giúp nhìn kết quả scan trực quan, dễ dàng hơn:
+
+![image](https://github.com/Roses21/NT534.O21.ANTN-GROUP9-Kubescape/assets/147015288/44feac88-e164-40b1-8c74-ce261edd832d)
+
+# G. Kết quả thực hiện
+Chúng tôi thực hiện 5 kịch bản demo, sẽ xoay quanh những tính năng mạnh mẽ và nổi bật của Kubescape. Bạn có thể xem video https://youtu.be/B7eazHTsIv8?si=-PSzdXG9JzmCJJGx để hiểu rõ hơn, đây là video được tài trợ bởi ARMO Teams nên nó đáng để xem đấy!
+## Kịch bản 1: Setting CPU and memory limits
+- Tác dụng: quan trọng khi đảm bảo rằng giới hạn bộ nhớ đã được thiết lập cho các container trong Kubernetes vì nó giúp:
+    
+    - **Quản lý tài nguyên**: hệ thống biết được mức bộ nhớ tối đa mà mỗi container có thể sử dụng, từ đó tránh được việc sử dụng quá nhiều bộ nhớ và gây ra hiện tượng quá tải (overload).
+    - **Phòng tránh sự cạnh tranh tài nguyên**: tránh tình trạng một container chiếm hết tài nguyên và ảnh hưởng đến hiệu suất của các container khác.
+    - **Phòng tránh tình trạng OOM (Out Of Memory)**.
+    - **Dễ dàng quản lý hiệu suất và khắc phục sự cố**: Khi giới hạn bộ nhớ được đặt, bạn có thể dễ dàng theo dõi và quản lý hiệu suất của container. Nếu có vấn đề về bộ nhớ, bạn có thể dễ dàng xác định container nào gây ra vấn đề và thực hiện các biện pháp khắc phục một cách hiệu quả.
+- Làm sao để sửa lỗi?
+  
+  => Cách sửa: Giới hạn memory bằng cách chỉnh sửa file cấu hình YAML của đối tượng. Minikube Dashboard cung cấp một giao diện đồ họa tiện lợi để quản lý và giám sát cluster Kubernetes của bạn trong môi trường Minikube. Do đó, sửa lại cấu hình thông qua giao diện GUI của dashboard.
+
+## Kịch bản 2: Configure Security Context to prevent Escalating Privilege
+
+## Kịch bản 3: Kubescape in CI/CD using Github Actions
+- Tham khảo: https://hub.armosec.io/docs/github-1
+- 
+## Kịch bản 4: Creating your own Framework/Controls
+- Tác dụng: Những frameworks tiêu chuẩn như NSA, MITREE, CIS rất tốt nhưng nó có rất nhiều yêu cầu cần phải đáp ứng. Trong khi đó, đối với từng cụm K8s, sẽ có nhiều yêu cầu không cần thiết, hơn nữa, có nhiều vul không thể fix được. Và việc tạo một framework mới sẽ giúp Kubescape tập trung đánh giá những khía cạnh quan trọng đối với triển khai của bạn.
+- Tham khảo: https://hub.armosec.io/docs/creating-your-own-controls
+## Kịch bản 5: Registry Scanning & Repository Scanning
+  
