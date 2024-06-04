@@ -155,6 +155,9 @@ Trên Worker Node còn có Kube-proxy với 2 chức năng:
 ![image](https://github.com/Roses21/NT534.O21.ANTN-GROUP9-Kubescape/assets/147015288/44feac88-e164-40b1-8c74-ce261edd832d)
 
 # G. Kiến trúc trong đồ án: Minikube + Docker + Kubescape
+
+![image](https://github.com/Roses21/NT534.O21.ANTN-GROUP9-Kubescape/assets/147015288/9c7b99cf-e8d4-4eab-8f04-dd50d066414f)
+
 https://www.linkedin.com/pulse/deploying-container-kubernetes-biswajit-patnaik/ 
 # H. Kết quả thực hiện
 Chúng tôi thực hiện 5 kịch bản demo, sẽ xoay quanh những tính năng mạnh mẽ và nổi bật của Kubescape. Bạn có thể xem video https://youtu.be/B7eazHTsIv8?si=-PSzdXG9JzmCJJGx để hiểu rõ hơn, đây là video được tài trợ bởi ARMO Teams nên nó đáng để xem đấy!
