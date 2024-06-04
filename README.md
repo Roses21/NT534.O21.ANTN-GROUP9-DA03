@@ -162,7 +162,7 @@ https://www.linkedin.com/pulse/deploying-container-kubernetes-biswajit-patnaik/
 # H. Kết quả thực hiện
 Chúng tôi thực hiện 5 kịch bản demo, sẽ xoay quanh những tính năng mạnh mẽ và nổi bật của Kubescape. Bạn có thể xem video https://youtu.be/B7eazHTsIv8?si=-PSzdXG9JzmCJJGx để hiểu rõ hơn, đây là video được tài trợ bởi ARMO Teams nên nó đáng để xem đấy!
 ## Kịch bản 1: Setting CPU and memory limits
-- Tác dụng: quan trọng khi đảm bảo rằng giới hạn bộ nhớ đã được thiết lập cho các container trong Kubernetes vì nó giúp:
+- Mô tả: quan trọng khi đảm bảo rằng giới hạn bộ nhớ đã được thiết lập cho các container trong Kubernetes vì nó giúp:
     
     - **Quản lý tài nguyên**: hệ thống biết được mức bộ nhớ tối đa mà mỗi container có thể sử dụng, từ đó tránh được việc sử dụng quá nhiều bộ nhớ và gây ra hiện tượng quá tải (overload).
     - **Phòng tránh sự cạnh tranh tài nguyên**: tránh tình trạng một container chiếm hết tài nguyên và ảnh hưởng đến hiệu suất của các container khác.
@@ -176,9 +176,9 @@ Chúng tôi thực hiện 5 kịch bản demo, sẽ xoay quanh những tính nă
 
 ## Kịch bản 3: Kubescape in CI/CD using Github Actions
 - Tham khảo: https://hub.armosec.io/docs/github-1
-- 
+- Mô tả: Sử dụng các tác vụ GitHub (GitHub actions) để quét kho lưu trữ git của bạn để tìm cấu hình sai với Kubescape.
 ## Kịch bản 4: Creating your own Framework/Controls
-- Tác dụng: Những frameworks tiêu chuẩn như NSA, MITREE, CIS rất tốt nhưng nó có rất nhiều yêu cầu cần phải đáp ứng. Trong khi đó, đối với từng cụm K8s, sẽ có nhiều yêu cầu không cần thiết, hơn nữa, có nhiều vul không thể fix được. Và việc tạo một framework mới sẽ giúp Kubescape tập trung đánh giá những khía cạnh quan trọng đối với triển khai của bạn.
+- Mô tả: Những frameworks tiêu chuẩn như NSA, MITREE, CIS rất tốt nhưng nó có rất nhiều yêu cầu cần phải đáp ứng. Trong khi đó, đối với từng cụm K8s, sẽ có nhiều yêu cầu không cần thiết, hơn nữa, có nhiều vul không thể fix được. Và việc tạo một framework mới sẽ giúp Kubescape tập trung đánh giá những khía cạnh quan trọng đối với triển khai của bạn.
 - Tham khảo: https://hub.armosec.io/docs/creating-your-own-controls
 ## Kịch bản 5: Registry Scanning & Repository Scanning
   
