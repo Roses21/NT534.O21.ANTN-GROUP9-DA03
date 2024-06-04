@@ -42,7 +42,7 @@ Chúng ta sẽ quan tâm đến 3 thành phần chính:
 # D. Kubernetes
 ## D.1. Khái niệm Kubernetes
 - Kubernetes (viết tắt là K8s) là một hệ thống mã nguồn mở được phát triển bởi Google, dùng để tự động hóa triển khai, mở rộng và quản lý các ứng dụng được đóng gói trong các container.
-- Nhưng Kubernetes không chỉ là một **công cụ điều phối container**. Nó có thể được coi là **hệ điều hành dành cho các ứng dụng gốc đám mây (cloud-native applications)** theo nghĩa nó là nền tảng mà các ứng dụng chạy trên đó, giống như các ứng dụng máy tính chạy trên MacOS, Windows hoặc Linux.
+- Nhưng Kubernetes không chỉ là một **công cụ điều phối container (container orchestration platform)**. Nó có thể được coi là **hệ điều hành dành cho các ứng dụng gốc đám mây (cloud-native applications)** theo nghĩa nó là nền tảng mà các ứng dụng chạy trên đó, giống như các ứng dụng máy tính chạy trên MacOS, Windows hoặc Linux.
 - K8s đảm bảo cho các service hoạt động trơn tru theo hướng dẫn từ file config - có đuôi yaml hoặc yml.
 - Kubernetes cung cấp các tính năng như tự động cân bằng tải, tự động khôi phục sau lỗi và tự động mở rộng để giúp quản lý một lượng lớn các microservices một cách hiệu quả và đáng tin cậy.
 - Một hình ảnh ẩn dụ dễ hiểu: K8s giống như nhạc trưởng **điều phối** các container là các nhạc công, file config là nhà soạn nhạc.
@@ -101,6 +101,12 @@ Trên Worker Node còn có Kube-proxy với 2 chức năng:
   - Định tuyến traffic đến đúng Pods.
   - Cung cấp Load Balancing cho Pods và đảm bảo traffic được phân bổ đồng đều cho các Pods.
 
+## D.4. OWASP (Open Web Application Security Project) Kubernetes Top 10 
+
+![image](https://github.com/Roses21/NT534.O21.ANTN-GROUP9-Kubescape/assets/147015288/4b78c437-af07-4f8c-94cb-5d3775434e58)
+
+- Link bài gốc: https://medium.com/@seifeddinerajhi/owasp-kubernetes-top-10-a-comprehensive-guide-f03af6fd66ed
+
 # Summary: Kiến trúc K8s + Docker
 
 ![image](https://github.com/Roses21/NT534.O21.ANTN-GROUP9-Kubescape/assets/147015288/9871cfab-ebc8-4d5a-81d7-556960da6758)
@@ -129,7 +135,7 @@ Trên Worker Node còn có Kube-proxy với 2 chức năng:
     
 - Chi tiết 3 khung mà Kubescape sử dụng:
   - NSA-CISA (National Security Agency - Cybersecurity and Infrastructure Security Agency): gồm 24 controls, đề cập những vấn đề về: cấu hình cluster, quyền truy cập và xác thực, pod và container, bảo mật mạng, quản lý bản vá.
-  - MISTRE (dựa trên MITRE ATT&CK): tập trung vào các chiến thuật, kỹ thuật và quy trình đã biết liên quan đến các cuộc tấn công mạng => Tạo ra ma trận mối đe dọa (threat matrix):
+  - MITRE (dựa trên MITRE ATT&CK): tập trung vào các chiến thuật, kỹ thuật và quy trình đã biết liên quan đến các cuộc tấn công mạng => Tạo ra ma trận mối đe dọa (threat matrix):
 
     ![image](https://github.com/Roses21/NT534.O21.ANTN-GROUP9-Kubescape/assets/147015288/d43932b0-e801-4210-91ff-d8b3514de5a9)
 
