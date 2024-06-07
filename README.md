@@ -156,9 +156,8 @@ Trên Worker Node còn có Kube-proxy với 2 chức năng:
 
 # G. Kiến trúc trong đồ án: Minikube + Docker + Kubescape
 
-![image](https://github.com/Roses21/NT534.O21.ANTN-GROUP9-Kubescape/assets/147015288/9c7b99cf-e8d4-4eab-8f04-dd50d066414f)
+![image](https://github.com/Roses21/NT534.O21.ANTN-GROUP9-Kubescape/assets/147015288/73e928e7-2ab9-472d-b97e-1dcd29b097f7)
 
-https://www.linkedin.com/pulse/deploying-container-kubernetes-biswajit-patnaik/ 
 # H. Kết quả thực hiện
 Chúng tôi thực hiện 5 kịch bản demo, sẽ xoay quanh những tính năng mạnh mẽ và nổi bật của Kubescape. Bạn có thể xem video https://youtu.be/B7eazHTsIv8?si=-PSzdXG9JzmCJJGx để hiểu rõ hơn, đây là video được tài trợ bởi ARMO Teams nên nó đáng để xem đấy!
 ## Kịch bản 1: Setting CPU and memory limits
@@ -183,6 +182,10 @@ Một thành phần quan trọng của quy trình phát triển phần mềm là
 - Hiện tại, tôi có update một vài file cấu hình yml trên GitHub, tuy nhiên quá trình tích hợp Kubescape vào GitHub Actions chưa thành công nên chưa tự động được:
 
 ![image](https://github.com/Roses21/NT534.O21.ANTN-GROUP9-Kubescape/assets/147015288/f6ccb411-ce6c-42a2-86ca-6e43c0158279)
+
+Tuy nhiên, khi quá trình scan có vấn đề gì, GitHub đều sẽ gửi mail thông báo đến bạn:
+
+![image](https://github.com/Roses21/NT534.O21.ANTN-GROUP9-Kubescape/assets/147015288/150c5211-a36c-4651-8722-483785ea2067)
 
 - Trước mắt, tôi sẽ dùng Kubescape để test các file này trước. Với framework NSA, thu được kết quả:
 
