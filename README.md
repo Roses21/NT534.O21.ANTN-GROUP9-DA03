@@ -174,14 +174,32 @@ Chúng tôi thực hiện 5 kịch bản demo, sẽ xoay quanh những tính nă
 
 ## Kịch bản 2: Configure Security Context to prevent Escalating Privilege
 
-## Kịch bản 3: Kubescape in CI/CD using Github Actions
+## Kịch bản 3: Registry Scanning & Repository Scanning & CI/CD
 - Tham khảo: https://hub.armosec.io/docs/github-1
 - Mô tả: Kịch bản này thảo luận về cách GitHub Actions có thể tăng cường tính bảo mật của quy trình CI/CD bằng cách tự động hóa các tác vụ liên quan đến bảo mật và cung cấp khả năng tích hợp với các công cụ bảo mật, kiểm soát phiên bản, kiểm soát truy cập và kiểm tra khác.
 
 Một thành phần quan trọng của quy trình phát triển phần mềm là quy trình tích hợp và triển khai liên tục (CI/CD), tự động hóa việc xây dựng, thử nghiệm và triển khai phần mềm. Tuy nhiên, quy trình CI/CD cũng dễ bị đe dọa bởi các mối đe dọa bảo mật và việc vi phạm bảo mật trong quy trình có thể gây ra hậu quả nghiêm trọng cho tổ chức. May mắn thay, hiện có sẵn các công cụ có thể giúp cải thiện tính bảo mật của quy trình CI/CD và đảm bảo quá trình xây dựng an toàn.
 
+- Hiện tại, tôi có update một vài file cấu hình yml trên GitHub, tuy nhiên quá trình tích hợp Kubescape vào GitHub Actions chưa thành công nên chưa tự động được:
+
+![image](https://github.com/Roses21/NT534.O21.ANTN-GROUP9-Kubescape/assets/147015288/f6ccb411-ce6c-42a2-86ca-6e43c0158279)
+
+- Trước mắt, tôi sẽ dùng Kubescape để test các file này trước. Với framework NSA, thu được kết quả:
+
+![image](https://github.com/Roses21/NT534.O21.ANTN-GROUP9-Kubescape/assets/147015288/81294d9b-7303-4b2f-855c-6366291bbc71)
+
+![image](https://github.com/Roses21/NT534.O21.ANTN-GROUP9-Kubescape/assets/147015288/889ef19c-8301-4b5f-b6f9-ea054ab75de2)
+
 ## Kịch bản 4: Creating your own Framework/Controls
 - Mô tả: Những frameworks tiêu chuẩn như NSA, MITREE, CIS rất tốt nhưng nó có rất nhiều yêu cầu cần phải đáp ứng. Trong khi đó, đối với từng cụm K8s, sẽ có nhiều yêu cầu không cần thiết, hơn nữa, có nhiều vul không thể fix được. Và việc tạo một framework mới sẽ giúp Kubescape tập trung đánh giá những khía cạnh quan trọng đối với triển khai của bạn.
 - Tham khảo: https://hub.armosec.io/docs/creating-your-own-controls
-## Kịch bản 5: Registry Scanning & Repository Scanning
+## Kịch bản 5: Đánh giá các thiếu sót của Kubescape
+- Mô tả: Mặc dù công cụ Kubescape được đánh giá là mạnh mẽ, tuy nhiên, vẫn không thể tránh khỏi những hạn chế. Ở kịch bản này, tôi sẽ đề cập đến những gì mà Kubescape chưa làm được so với các công cụ khác như Trivy. Việc không phát hiện lỗ hổng bảo mật không có nghĩa là không có lỗ hổng, nên cần sử dụng nhiều tool để detect.
+- Thực hiện:
+  - Tìm hiểu về Trivy: Trivy là một công cụ mã nguồn mở dùng để quét và phát hiện các lỗ hổng bảo mật trong các hình ảnh Docker, mã nguồn và các hệ thống Kubernetes. Nó được phát triển bởi Aqua Security và có khả năng phát hiện các lỗ hổng trong các thành phần khác nhau của ứng dụng, bao gồm các thư viện, các phần phụ thuộc và các cấu hình không an toàn. 
+
+    Tham khảo thêm tại: https://aquasecurity.github.io/trivy/v0.17.2/
+  - Các bạn có thể pull trivy bằng docker với lệnh: ``docker run aquasec/trivy``
+  - 
+  - 
   
