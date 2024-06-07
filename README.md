@@ -176,7 +176,10 @@ Chúng tôi thực hiện 5 kịch bản demo, sẽ xoay quanh những tính nă
 
 ## Kịch bản 3: Kubescape in CI/CD using Github Actions
 - Tham khảo: https://hub.armosec.io/docs/github-1
-- Mô tả: Sử dụng các tác vụ GitHub (GitHub actions) để quét kho lưu trữ git của bạn để tìm cấu hình sai với Kubescape.
+- Mô tả: Kịch bản này thảo luận về cách GitHub Actions có thể tăng cường tính bảo mật của quy trình CI/CD bằng cách tự động hóa các tác vụ liên quan đến bảo mật và cung cấp khả năng tích hợp với các công cụ bảo mật, kiểm soát phiên bản, kiểm soát truy cập và kiểm tra khác.
+
+Một thành phần quan trọng của quy trình phát triển phần mềm là quy trình tích hợp và triển khai liên tục (CI/CD), tự động hóa việc xây dựng, thử nghiệm và triển khai phần mềm. Tuy nhiên, quy trình CI/CD cũng dễ bị đe dọa bởi các mối đe dọa bảo mật và việc vi phạm bảo mật trong quy trình có thể gây ra hậu quả nghiêm trọng cho tổ chức. May mắn thay, hiện có sẵn các công cụ có thể giúp cải thiện tính bảo mật của quy trình CI/CD và đảm bảo quá trình xây dựng an toàn.
+
 ## Kịch bản 4: Creating your own Framework/Controls
 - Mô tả: Những frameworks tiêu chuẩn như NSA, MITREE, CIS rất tốt nhưng nó có rất nhiều yêu cầu cần phải đáp ứng. Trong khi đó, đối với từng cụm K8s, sẽ có nhiều yêu cầu không cần thiết, hơn nữa, có nhiều vul không thể fix được. Và việc tạo một framework mới sẽ giúp Kubescape tập trung đánh giá những khía cạnh quan trọng đối với triển khai của bạn.
 - Tham khảo: https://hub.armosec.io/docs/creating-your-own-controls
