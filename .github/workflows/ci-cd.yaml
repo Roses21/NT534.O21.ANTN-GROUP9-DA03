@@ -1,0 +1,7 @@
+# .github/workflows/ci-cd.yaml
+name: CI/CD
+
+on: push
+
+jobs:
+  (...)

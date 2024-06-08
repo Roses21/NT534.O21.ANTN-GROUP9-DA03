@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp-container
+        image: myapp:latest
+        ports:
+        - containerPort: 80
+        envFrom:
+        - configMapRef:
+            name: myapp-config
+      - name: sidecar-container
+        image: sidecar:latest
+        ports:
+        - containerPort: 8080

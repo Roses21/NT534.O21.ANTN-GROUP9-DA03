@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: insecure-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-insecure-app
+  template:
+    metadata:
+      labels:
+        app: my-insecure-app
+    spec:
+      containers:
+      - name: my-insecure-container
+        image: nginx:1.21.6
+        securityContext:
+          runAsUser: 1000
+          runAsGroup: 3000
+        ports:
+        - containerPort: 80
