@@ -32,7 +32,7 @@
   ⇒ Nhờ vào Kubenetes nằm trên master node. Tìm hiểu kỹ hơn ở mục Kubenetes nhé! 
 
 ## C.4. Docker architecture
-<img src="https://docs.docker.com/get-started/images/docker-architecture.webp">
+![image](https://github.com/user-attachments/assets/fac08858-9b00-4c31-b935-5d17daca4e10)
 
 Chúng ta sẽ quan tâm đến 3 thành phần chính:
 - Docker Client: tiếp nhận câu lệnh từ phía user như `docker run` hay `docker pull`. Sau đó gửi đến dockerrd ( Docker Daemon - nằm trên docker server) để xử lý các yêu cầu.
@@ -146,7 +146,7 @@ Trên Worker Node còn có Kube-proxy với 2 chức năng:
 ## F.2. Vị trí của Kubescape trong kiến trúc
 ## F.3. Vulnerability scanning
 - Mục này xuất hiện là vì thầy của mình yêu cầu nhóm focus vào vấn đề này, link gốc các bạn có thể xem tại https://kubescape.io/docs/operator/vulnerabilities/
-- 
+
 ## ARMO Platform
 
 - ARMO Platform là một giải pháp SaaS (Software as a service).
