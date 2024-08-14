@@ -1,4 +1,3 @@
-# Mục lục
 # A. Sơ lược Microservice architecture và Monolithic architecture
 - Software architecture là tổ chức hệ thống bao gồm rất nhiều các thành phần như Web Server, database, bộ nhớ và các lớp layer thực hiện việc giao tiếp. Chúng liên kết với nhau hoặc với một môi trường nhất định. Mục tiêu cuối cùng của thiết kế hệ thống (system architecture) là giải quyết vấn đề của doanh nghiệp. Và Microservice, Monolithic chính là 2 mô hình pattern của software architecture đang phổ biến hiện nay.
 - Monolithic, hiểu đơn giản toàn bộ code được đóng gói và phát triển trên duy nhất một project/source code. Điều này dẫn đến vấn đề là gây khó khăn và tốn sức cho việc scale, update hệ thống, không đảm bảo tính sẵn sàng. Nó không phù hợp nếu hệ thống có quy mô lớn, cũng gây khó khăn cho các kỹ sư khi update code. 
